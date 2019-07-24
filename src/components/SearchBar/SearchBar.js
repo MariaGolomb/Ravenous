@@ -18,8 +18,10 @@ class SeachBar extends React.Component {
             highestRated: 'rating',
             mostReviewed: 'review_count',
         };
-        //this.getSortByClass=this.getSortByClass.bind(this);
+        this.getSortByClass=this.getSortByClass.bind(this);
         //this.handleSortByChange=this.handleSortByChange.bind(this);
+        this.handleLocationChange=this.handleLocationChange.bind(this);
+        this.handleTermChange=this.handleTermChange.bind(this);
     }
 
     //returns the current CSS class for a sorting option:
@@ -30,6 +32,14 @@ class SeachBar extends React.Component {
     //sets the state of a sorting option:
     handleSortByChange(sortByOption){
         this.setState({sortBy: sortByOption})
+    }
+
+    handleTermChange(event){
+        this.setState({term: event.target.value})
+    }
+
+    handleLocationChange(event){
+        this.setState({location: event.target.value})
     }
 
 
@@ -49,8 +59,8 @@ class SeachBar extends React.Component {
                     </ul>
                 </div>
                 <div className="SearchBar-fields">
-                    <input placeholder="Search Businesses" />
-                    <input placeholder="Where?" />
+                    <input onClick={this.handleTermChange} placeholder="Search Businesses" />
+                    <input onClick={this.handleLocationChange} placeholder="Where?" />
                 </div>
                 <div className="SearchBar-submit">
                     <a>Let's Go</a>
